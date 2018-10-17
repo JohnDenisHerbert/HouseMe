@@ -1,0 +1,8 @@
+{
+  "name": "HouseMe",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "pro_id": "b0b0b074"
+}

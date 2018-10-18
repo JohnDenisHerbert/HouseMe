@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "331438416165",
+    "firebase_url": "https://houseme-1997.firebaseio.com",
+    "project_id": "houseme-1997",
+    "storage_bucket": "houseme-1997.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331438416165:android:77560c372cb98183",
+        "android_client_info": {
+          "package_name": "com.HouseMe.fyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331438416165-1li4jsacd6enh4bc0s5ma9kqss320gte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTFeh1cRtigI0-cwBV-M5onWGu6aW0Bhs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

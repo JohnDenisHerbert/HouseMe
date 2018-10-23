@@ -11,8 +11,9 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
-  { path: 'crud', 
-    loadChildren: './crud/crud.module#CrudPageModule' }
+  { path: 'property_page', loadChildren: './property-page/property-page.module#PropertyPagePageModule' },
+  
+  { path: 'profile_page', loadChildren: './profile-page/profile-page.module#ProfilePagePageModule' }
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireFunctionsModule } from "@angular/fire/functions";
 import { AngularFireMessagingModule } from "@angular/fire/messaging";
-import { firebaseConfig } from './credentials';
+
 
 
 @NgModule({
@@ -27,11 +27,11 @@ import { firebaseConfig } from './credentials';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireFunctionsModule,
-    AngularFireMessagingModule,
+    AngularFireMessagingModule
     
 
   ],

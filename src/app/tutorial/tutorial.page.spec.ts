@@ -1,20 +1,22 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileFormComponent } from './profile-form.component';
+import { TutorialPage } from './tutorial.page';
 
-describe('ProfileFormComponent', () => {
-  let component: ProfileFormComponent;
-  let fixture: ComponentFixture<ProfileFormComponent>;
+describe('TutorialPage', () => {
+  let component: TutorialPage;
+  let fixture: ComponentFixture<TutorialPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileFormComponent ]
+      declarations: [ TutorialPage ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileFormComponent);
+    fixture = TestBed.createComponent(TutorialPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

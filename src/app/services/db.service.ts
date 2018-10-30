@@ -1,32 +1,64 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
-import * as firestore from 'firebase/app'
-
-export interface Post {
-  Age: number;
-  Name: string;
-  Occupation: string;
-}
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
+  constructor(private afs: AngularFirestore) {}
 
-  private postRef: AngularFirestoreCollection<Post>;
-
-  constructor(private afs: AngularFirestore){
-    this.postRef = this.afs.collection('CRUD');
+  collection$(path, query?) {
+    return this.afs
+      .collection(path, query)
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data: Object = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
   }
-  
-  getRecentPosts() {
-    return this.afs.collection('CRUD', ref =>
-    ref.orderBy('Age', 'desc')
-    .limit(10)
-    )
+
+  doc$(path): Observable<any> {
+    return this.afs
+      .doc(path)
+      .snapshotChanges()
+      .pipe(
+        map(doc => {
+          return { id: doc.payload.id, ...doc.payload.data() };
+        })
+      );
   }
 
-  createPost(data: Post) {
+  /**
+   * @param  {string} path 'collection' or 'collection/docID'
+   * @param  {object} data new data
+   *
+   * Creates or updates data on a collection or document.
+   **/
+  updateAt(path: string, data: Object): Promise<any> {
+    const segments = path.split('/').filter(v => v);
+    if (segments.length % 2) {
+      // Odd is always a collection
+      return this.afs.collection(path).add(data);
+    } else {
+      // Even is always document
+      return this.afs.doc(path).set(data, { merge: true });
+    }
+  }
 
+  /**
+   * @param  {string} path path to document
+   *
+   * Deletes document from Firestore
+   **/
+  delete(path) {
+    return this.afs.doc(path).delete();
   }
 }

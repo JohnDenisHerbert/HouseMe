@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TutorialGuard } from './guards/tutorial.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    loadChildren: './home/home.module#HomePageModule',
+    canActivate: [TutorialGuard]
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  { path: 'property_page', loadChildren: './property-page/property-page.module#PropertyPagePageModule' },
-  
-  { path: 'profile_page', loadChildren: './profile-page/profile-page.module#ProfilePagePageModule' }
-];
+    path: 'tutorial',
+    loadChildren: './tutorial/tutorial.module#TutorialPageModule'
+  }]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

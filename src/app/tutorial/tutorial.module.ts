@@ -4,13 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
-import { PropertyPagePage } from './property-page.page';
+import { TutorialPage } from './tutorial.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: PropertyPagePage
+    component: TutorialPage
   }
 ];
 
@@ -21,6 +20,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PropertyPagePage]
+  declarations: [TutorialPage]
 })
-export class PropertyPagePageModule {}
+export class TutorialPageModule {}

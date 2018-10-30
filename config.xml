@@ -83,6 +83,14 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-firebase" spec="2.0.5" />
+    <plugin name="cordova-sqlite-storage" spec="2.5.0" />
     <engine name="android" spec="7.1.1" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-plugin-googleplus" spec="5.3.2">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.331438416165-tg9hiitj2p1ojghqfah16de1qk3bgmak" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
+    <plugin name="cordova-android-play-services-gradle-release" spec="^1.4.4">
+        <variable name="PLAY_SERVICES_VERSION" value="{9.0.0}" />
+    </plugin>
 </widget>

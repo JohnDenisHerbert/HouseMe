@@ -4,13 +4,14 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { IonicModule } from "@ionic/angular";
 import { LoginComponent } from './login/login.component';
+import { PropertyFeedComponent } from './property-feed/property-feed.component';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule
   ],
-  declarations: [ProfileComponent, LoginComponent],
-  exports: [ProfileComponent, LoginComponent]
+  declarations: [ProfileComponent, LoginComponent, PropertyFeedComponent],
+  exports: [ProfileComponent, LoginComponent, PropertyFeedComponent]
 })
 export class SharedModule { }

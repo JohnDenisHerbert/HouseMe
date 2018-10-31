@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title *ngIf="!Property">Create New Property</ion-title>
+        <ion-title *ngIf="Property">Update {{ Property.id }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div></div>
+
+    <form [formGroup]="PropertyForm" (ngSubmit)="createProperty()">
+
+        <ion-label>Property Details</ion-label>
+        <ion-textarea formControlName="content" type="content" placeholder="your Property details" rows="2"></ion-textarea>
+        <ion-textarea formControlName="Price" type="Price" placeholder="Property Price" rows="1"></ion-textarea>
+        <ion-textarea formControlName="City" type="City" placeholder="City" rows="1"></ion-textarea>
+        <ion-textarea formControlName="DisplayName" type="DisplayName" placeholder="Display Name" rows="1"></ion-textarea>
+        <ion-textarea formControlName="PhotoURL" type="PhotoURL" placeholder="Photo Url" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Amenities" type="Amenities" placeholder="Amenities details" rows="2"></ion-textarea>
+        <ion-label>Status</ion-label>
+        <ion-list>
+            <ion-radio-group formControlName="status">
+
+                <ion-item>
+                    <ion-label>Pending</ion-label>
+                    <ion-radio slot="start" value="pending" checked></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Complete</ion-label>
+                    <ion-radio slot="start" value="complete"></ion-radio>
+                </ion-item>
+
+            </ion-radio-group>
+        </ion-list>
+
+        <ion-button [disabled]="PropertyForm.invalid" type="submit">{{ Property ? 'Update!' : 'Create!' }}</ion-button>
+    </form>
+
+
+
+
+</ion-content>

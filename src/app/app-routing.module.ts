@@ -12,8 +12,17 @@ const routes: Routes = [
   {
     path: 'tutorial',
     loadChildren: './tutorial/tutorial.module#TutorialPageModule'
-  }]
+  },
 
+  { path: 'profile-edit',
+    loadChildren: './profile-edit/profile-edit.module#ProfileEditPageModule' },
+
+  { path: 'Property', 
+  loadChildren: './Property/Property.module#PropertyPageModule',
+  canActivate: [AuthGuard] }
+
+
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

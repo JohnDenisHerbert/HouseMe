@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Profile
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,10 +12,18 @@
 <ion-content padding>
     <ion-item-divider>
         <ion-label>
-            Properties
+            Login Component
         </ion-label>
     </ion-item-divider>
-    
-<app-property-feed> </app-property-feed>
+
+
+    <app-login></app-login>
+
+   
+    <ion-fab  (click)="presentProfileForm()">
+      <ion-button>
+          Change Details
+      </ion-button>
+  </ion-fab>
  
 </ion-content>

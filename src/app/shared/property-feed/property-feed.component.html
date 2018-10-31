@@ -1,0 +1,25 @@
+
+<ion-content >
+
+<ng-container *ngIf="(auth.user | async) || {} as user">
+
+
+  <ion-card *ngFor="let Property of filtered | async; trackBy: trackById">
+  
+  <ion-img [src]= "Property.PhotoURL"></ion-img>
+    
+    <ion-card-header>
+      <ion-card-title> {{Property.DisplayName}}</ion-card-title>
+  </ion-card-header>
+    <ion-card-content>
+      Price: {{ Property.Price }}
+      <p>Description: {{Property.content}}</p>
+      <p>Location: {{Property.City}}</p>
+      <p>Amenities: {{Property.Amenities}}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+</ng-container>
+</ion-content>
+

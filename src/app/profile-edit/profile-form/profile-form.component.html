@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title *ngIf="user">Update {{ users.uid }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div></div>
+
+    <form [formGroup]="ProfileForm" (ngSubmit)="createUser()">
+
+        <ion-label>User Details Update</ion-label>
+        <ion-textarea formControlName="displayName" type="displayName" placeholder="your displayName" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Age" type="Age" placeholder="Age" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Occupation" type="Occupation" placeholder="Occupation" rows="1"></ion-textarea>
+        <ion-textarea formControlName="Gender" type="Gender" placeholder="Gender " rows="1"></ion-textarea>
+        <ion-textarea formControlName="PhotoURL" type="PhotoURL" placeholder="Photo Url" rows="1"></ion-textarea>
+        <ion-textarea formControlName="isLandlord" type="isLandlord" placeholder="Are you a Landlord" rows="1"></ion-textarea>
+        <ion-textarea formControlName="AboutMe" type="AboutMe" placeholder="AboutMe" rows="4"></ion-textarea>
+       
+        <ion-list>
+        
+        </ion-list>
+
+        <ion-button [disabled]="ProfileForm.invalid" type="submit">{{ user ? 'Update!' : 'Create!' }}</ion-button>
+    </form>
+
+
+
+
+</ion-content>

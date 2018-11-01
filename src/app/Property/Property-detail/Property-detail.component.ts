@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DbService } from '../../services/db.service';
+import { NgModule } from "@angular/core";
+import {APP_BASE_HREF} from '@angular/common';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [RouterModule.forRoot([]),],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }, AngularFirestore]
+})
 
 @Component({
   selector: 'app-Property-detail',

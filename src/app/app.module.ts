@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
@@ -21,10 +21,12 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Firebase } from '@ionic-native/firebase/ngx';
 
 @NgModule({
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    IonicModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
@@ -36,6 +38,7 @@ import { Firebase } from '@ionic-native/firebase/ngx';
   ],
   providers: [
     Firebase,
+    AngularFirestore,
     GooglePlus,
     StatusBar,
     SplashScreen,

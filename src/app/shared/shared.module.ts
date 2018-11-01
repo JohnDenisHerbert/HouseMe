@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { PropertyFeedComponent } from './property-feed/property-feed.component';
 
 @NgModule({
+
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     IonicModule,
     CommonModule

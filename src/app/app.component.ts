@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Platform, Menu } from '@ionic/angular';
+
+import { Platform, Menu, IonBackButton } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 

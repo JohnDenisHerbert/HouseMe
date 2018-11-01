@@ -15,12 +15,13 @@
         <ion-segment-button value="" checked>
             All
         </ion-segment-button>
-        <ion-segment-button value="complete">
-            Complete
+        <ion-segment-button value="Available">
+                Available
+            </ion-segment-button>
+        <ion-segment-button value="Unavailable">
+            Unavailable
         </ion-segment-button>
-        <ion-segment-button value="pending">
-            Pending
-        </ion-segment-button>
+       
 
 
     </ion-segment>
@@ -29,10 +30,10 @@
 
         <ion-item *ngFor="let Property of filtered | async; trackBy: trackById">
             <ion-label>
-                <span [class.complete]="Property.status === 'complete'">{{ Property.content }}</span>
+                <span [class.Unavailable]="Property.status === 'Unavailable'">{{ Property.content }}</span>
             </ion-label>
 
-            <ion-checkbox (click)="toggleStatus(Property)" [checked]="Property.status === 'complete'" color="success"></ion-checkbox>
+           
 
 
             <ion-button [href]="'Property/' + Property.id">

@@ -30,7 +30,7 @@ export class PropertyFormComponent implements OnInit {
       PhotoURL: '',
       Amenities: '',
 
-      status: 'pending',
+      status: 'Available',
       ...this.Property
     };
     this.PropertyForm = this.fb.group({

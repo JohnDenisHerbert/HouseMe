@@ -11,6 +11,7 @@
 <ion-content padding>
 
     <ion-card *ngIf="Property$ | async as Property">
+            <ion-img [src]= "Property.PhotoURL"></ion-img>
         <ion-card-header>
             <ion-card-title>{{ Property.id }}</ion-card-title>
         </ion-card-header>

@@ -56,7 +56,7 @@ export class PropertyPage implements OnInit {
   }
 
   toggleStatus(Property) {
-    const status = Property.status === 'complete' ? 'pending' : 'complete';
+    const status = Property.status === 'complete' ? 'Available' : 'Unavailable';
     this.db.updateAt(`Propertys/${Property.id}`, { status });
   }
 

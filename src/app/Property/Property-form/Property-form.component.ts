@@ -108,9 +108,10 @@ export class PropertyFormComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
 
- async uploadFile(event) {   
+ async uploadFile(event) {    
+    const uid = await this.auth.uid();
     const file = event.target.files[0];
-    const filePath = `test/file`;
+    const filePath = `test/${uid}_${file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
 

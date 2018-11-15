@@ -20,12 +20,17 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Firebase } from '@ionic-native/firebase/ngx';
 
+
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
 @NgModule({
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    AngularFireStorageModule,
     IonicModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),

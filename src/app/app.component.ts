@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth.service';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private auth: AuthService,
     private storage: Storage,
-    private router: Router
+    private router: Router,
+    private afsstorage: AngularFireStorage
     
   ) {
     this.initializeApp();

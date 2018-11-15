@@ -3,6 +3,9 @@ import { ModalController, NavParams } from '@ionic/angular';
 import { DbService } from '../../services/db.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Property-form',
@@ -14,8 +17,9 @@ export class PropertyFormComponent implements OnInit {
     private db: DbService,
     private auth: AuthService,
     public modal: ModalController,
-    private fb: FormBuilder // private params: NavParams
-  ) {}
+    private fb: FormBuilder, // private params: NavParams
+    private storage: AngularFireStorage
+    ) {}
 
   PropertyForm: FormGroup;
 
@@ -99,4 +103,25 @@ export class PropertyFormComponent implements OnInit {
     this.db.updateAt(`Propertys/${id}`, data);
     this.modal.dismiss();
   }
+
+  
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+
+ async uploadFile(event) {   
+    const file = event.target.files[0];
+    const filePath = `test/file`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+     )
+    .subscribe()
+  }
+
+
 }

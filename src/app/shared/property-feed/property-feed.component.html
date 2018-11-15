@@ -1,12 +1,32 @@
 
-<ion-content >
 
 <ng-container *ngIf="(auth.user | async) || {} as user">
 
-
+  
   <ion-card *ngFor="let Property of filtered | async; trackBy: trackById">
   
-  <ion-img [src]= "Property.PhotoURL"></ion-img>
+    <ion-slides loop="true" pager="true" >
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL"></ion-img>
+      </ion-slide>
+    
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL1"></ion-img>
+      </ion-slide>
+    
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL2"></ion-img>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL3"></ion-img>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-img [src]= "Property.PhotoURL4"></ion-img>
+      </ion-slide>
+    </ion-slides>
+ 
     
     <ion-card-header>
       <ion-card-title> {{Property.DisplayName}}</ion-card-title>
@@ -20,6 +40,4 @@
 
   </ion-card>
 
-</ng-container>
-</ion-content>
 

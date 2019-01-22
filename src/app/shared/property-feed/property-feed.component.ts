@@ -17,9 +17,10 @@ export class PropertyFeedComponent implements OnInit {
 
   Propertys;
   filtered;
-
+user;
   Property: Observable<any[]>;
 
+  Location;
 
   filter = new BehaviorSubject(null);
 
@@ -29,29 +30,48 @@ export class PropertyFeedComponent implements OnInit {
     public auth: AuthService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    const uid = await this.auth.uid();
+    const id = this.user ? this.user.uid : '';
+
+    /*this.Location = 
+        this.db.collection$(`users/${uid}`, data =>
+          data
+         .is('City')
+        ),
+      shareReplay(1)
+    ;*/
+
     this.Propertys = this.auth.user$.pipe(
       switchMap(user =>
         this.db.collection$('Propertys', ref =>
-          ref
-            
-            .orderBy('createdAt', 'desc')
-            .limit(100)
+          {
+            return ref
+              .where('City', '==', this.db.collection$(`users/${uid}`, data =>
+              data
+             .is('City'))
+              //.where('City', '==', 'Cork')
+           //   .orderBy('createdAt', 'desc')
+          //   .limit(100);
+          
         )
+          }
+      )
       ),
       shareReplay(1)
     );
 
-    this.filtered = this.filter.pipe(
-      switchMap(status => {
-        return this.Propertys.pipe(
-          map(arr =>
-            (arr as any[]).filter(
-              obj => (status ? obj.status === status : true)
-            )
-          )
+  
+
+    this.filtered = this.Propertys.pipe(
+      switchMap(filter => {
+        return this.Propertys.pipe('users', ref =>
+        ref
+        .where('City', '==', )
+       
         );
       })
     );
   }
 }
+1

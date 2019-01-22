@@ -28,9 +28,12 @@ export class ProfileFormComponent implements OnInit {
     Age: '',
     Occupation: '',
     Gender: '',
-    displayName: '',
     AboutMe: '',
-    isLandlord: '',
+    City:'',
+    RoomType:'',
+    Price:'',
+
+
 
    
     ...this.user
@@ -61,14 +64,6 @@ export class ProfileFormComponent implements OnInit {
         Validators.maxLength(3)
       ]
     ],
-    DisplayName: [
-      data.DisplayName,
-      [
-        
-        Validators.minLength(1),
-        Validators.maxLength(100)
-      ]
-    ],
     Gender: [
       data.Gender,
       [
@@ -77,8 +72,24 @@ export class ProfileFormComponent implements OnInit {
         Validators.maxLength(10)
       ]
     ],
-    isLandlord: [
-      data.isLandlord,
+    City: [
+      data.City,
+      [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(200)
+      ]
+    ],
+    RoomType: [
+      data.RoomType,
+      [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(200)
+      ]
+    ],
+    Price: [
+      data.Price,
       [
         Validators.required,
         Validators.minLength(1),
@@ -88,9 +99,9 @@ export class ProfileFormComponent implements OnInit {
   });
 }
 
-async createUser() {
+async UpdateUser() {
   const uid = await this.auth.uid();
-  const id = this.user ? this.user.id : '';
+  const id = this.user ? this.user.uid : '';
     const data = {
       uid,
     createdAt: Date.now(),
@@ -98,7 +109,7 @@ async createUser() {
     ...this.ProfileForm.value
   };
 
-  this.db.updateAt(`users/${id}`, data);
+  this.db.updateAt(`users/${uid}`, data);
   this.modal.dismiss();
 }
 }
